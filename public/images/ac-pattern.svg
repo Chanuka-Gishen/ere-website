@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <pattern id="acPattern" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+      <!-- AC Unit Icon -->
+      <rect x="10" y="15" width="30" height="20" rx="2" fill="none" stroke="#60A5FA" stroke-width="1" opacity="0.3"/>
+      <rect x="15" y="10" width="20" height="5" rx="1" fill="none" stroke="#60A5FA" stroke-width="1" opacity="0.3"/>
+      <line x1="20" y1="35" x2="20" y2="45" stroke="#60A5FA" stroke-width="1" opacity="0.3"/>
+      <line x1="30" y1="35" x2="30" y2="45" stroke="#60A5FA" stroke-width="1" opacity="0.3"/>
+      
+      <!-- Snowflake Icon -->
+      <g transform="translate(70, 25)" opacity="0.2">
+        <line x1="0" y1="-8" x2="0" y2="8" stroke="#60A5FA" stroke-width="1"/>
+        <line x1="-7" y1="-4" x2="7" y2="4" stroke="#60A5FA" stroke-width="1"/>
+        <line x1="-7" y1="4" x2="7" y2="-4" stroke="#60A5FA" stroke-width="1"/>
+      </g>
+      
+      <!-- Fan Blades -->
+      <g transform="translate(30, 70)" opacity="0.15">
+        <circle cx="0" cy="0" r="8" fill="none" stroke="#60A5FA" stroke-width="1"/>
+        <line x1="0" y1="-8" x2="0" y2="8" stroke="#60A5FA" stroke-width="1"/>
+        <line x1="-7" y1="-4" x2="7" y2="4" stroke="#60A5FA" stroke-width="1"/>
+        <line x1="-7" y1="4" x2="7" y2="-4" stroke="#60A5FA" stroke-width="1"/>
+      </g>
+    </pattern>
+  </defs>
+  <rect width="100" height="100" fill="url(#acPattern)"/>
+</svg>
