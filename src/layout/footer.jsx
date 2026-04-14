@@ -25,17 +25,14 @@ import {
 } from "@mui/icons-material";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { contactInfo, serviceAreas } from "../constants/common-constants";
+import {
+  contactInfo,
+  serviceAreas,
+  services,
+} from "../constants/common-constants";
 
 const footerLinks = {
-  services: [
-    { name: "AC Installation", href: "/services/installation" },
-    { name: "AC Repair", href: "/services/repair" },
-    { name: "AC Maintenance", href: "/services/maintenance" },
-    { name: "AC Gas Refilling", href: "/services/gas-refilling" },
-    { name: "AC Relocation", href: "/services/relocation" },
-    { name: "AC Rental", href: "/rental" },
-  ],
+  services: services,
   rental: [
     { name: "Portable AC", href: "/rental/portable" },
     { name: "Outdoor Event AC", href: "/rental/outdoor-event" },
@@ -248,7 +245,7 @@ const Footer = () => {
               <Stack spacing={1.5}>
                 {footerLinks.services.map((link) => (
                   <MuiLink
-                    key={link.name}
+                    key={link.id}
                     component={Link}
                     href={link.href}
                     sx={{

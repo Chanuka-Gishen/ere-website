@@ -43,51 +43,7 @@ import {
   fadeInUp,
   zoomIn,
 } from "../../utils/animations";
-
-// Service data
-const services = [
-  {
-    id: "installation",
-    title: "AC Installation",
-    icon: <AcUnit sx={{ fontSize: 40 }} />,
-    description:
-      "Professional installation of split, cassette, ceiling & portable ACs",
-    color: "#1976D2",
-    link: "/services/installation",
-  },
-  {
-    id: "repair",
-    title: "AC Repair",
-    icon: <Build sx={{ fontSize: 40 }} />,
-    description: "Fast diagnosis and repair for all AC brands and models",
-    color: "#FF9800",
-    link: "/services/repair",
-  },
-  {
-    id: "maintenance",
-    title: "AC Maintenance",
-    icon: <Handyman sx={{ fontSize: 40 }} />,
-    description: "Regular maintenance for optimal performance & longevity",
-    color: "#10B981",
-    link: "/services/maintenance",
-  },
-  {
-    id: "relocation",
-    title: "AC Relocation",
-    icon: <DirectionsCar sx={{ fontSize: 40 }} />,
-    description: "Safe dismantling, transport & reinstallation",
-    color: "#EC4899",
-    link: "/services/relocation",
-  },
-  {
-    id: "rental",
-    title: "AC Rental",
-    icon: <Warehouse sx={{ fontSize: 40 }} />,
-    description: "Flexible rental for events, offices & temporary cooling",
-    color: "#06B6D4",
-    link: "/rental",
-  },
-];
+import { services } from "@/constants/common-constants";
 
 // Why choose us data
 const whyChooseUs = [
@@ -517,7 +473,7 @@ const HomePage = () => {
                     </Typography>
                     <Button
                       component={Link}
-                      href={service.link}
+                      href={service.href}
                       endIcon={<ArrowForward />}
                       sx={{ color: service.color }}
                     >

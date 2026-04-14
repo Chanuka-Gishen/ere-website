@@ -20,7 +20,6 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import AcUnitIcon from "@mui/icons-material/AcUnit";
 
 import { navigation } from "../constants/navigation-constants";
 import Image from "next/image";
