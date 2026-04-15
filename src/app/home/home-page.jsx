@@ -875,7 +875,13 @@ const HomePage = () => {
                     p: 2,
                   }}
                 >
-                  <CardContent>
+                  <CardContent
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      flexGrow: 1,
+                    }}
+                  >
                     <Rating
                       value={testimonial.rating}
                       readOnly
@@ -883,7 +889,7 @@ const HomePage = () => {
                     />
                     <Typography
                       variant="body1"
-                      sx={{ mb: 2, fontStyle: "italic" }}
+                      sx={{ mb: 2, fontStyle: "italic", flexGrow: 1 }}
                     >
                       "{testimonial.text}"
                     </Typography>

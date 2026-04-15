@@ -1,215 +1,96 @@
-"use client";
-
-import { useParams, notFound } from "next/navigation";
-import {
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardContent,
-  Button,
-  Chip,
-  Stack,
-  Avatar,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Breadcrumbs,
-  Link as MuiLink,
-  Paper,
-  Divider,
-} from "@mui/material";
-import {
-  CheckCircle,
-  ArrowBack,
-  Schedule,
-  PriceCheck,
-  Home,
-  NavigateNext,
-} from "@mui/icons-material";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { fadeInUp } from "@/utils/animations";
+import ServiceDetailsPage from "./service-details-page";
 import { services } from "@/constants/common-constants";
 
-export default function ServiceDetailPage() {
-  const params = useParams();
-  const serviceId = params.id;
-  const service = services.filter((service) => service.id === serviceId)[0];
+// Generate metadata dynamically
+export const generateMetadata = async ({ params }) => {
+  const { id } = await params;
+  const service = services.find((s) => s.id === id);
 
   if (!service) {
-    notFound();
+    return {
+      title: "Service Not Found | EREngineers",
+      description: "The requested service page could not be found.",
+    };
   }
 
-  return (
-    <Box>
-      <Container sx={{ py: 6 }}>
-        <Breadcrumbs sx={{ mb: 3 }}>
-          <MuiLink
-            component={Link}
-            href="/"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              textDecoration: "none",
-            }}
-          >
-            <Home sx={{ mr: 0.5 }} fontSize="small" />
-            Home
-          </MuiLink>
-          <MuiLink
-            component={Link}
-            href="/services"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              textDecoration: "none",
-            }}
-          >
-            Services
-          </MuiLink>
-          <Typography color="text.primary">{service.name}</Typography>
-        </Breadcrumbs>
+  const serviceName = service.name;
+  const serviceDescription = service.fullDescription.substring(0, 160);
 
-        <Button
-          component={Link}
-          href="/services"
-          startIcon={<ArrowBack />}
-          sx={{ mb: 4 }}
-        >
-          Back to Services
-        </Button>
+  return {
+    title: `${serviceName} Services | Professional Air Conditioner ${serviceName} | EREngineers`,
+    description: serviceDescription,
+    keywords: [
+      `${serviceName.toLowerCase()} Sri Lanka`,
+      `${serviceName.toLowerCase()} Colombo`,
+      `air conditioner ${serviceName.toLowerCase()}`,
+      `AC ${serviceName.toLowerCase()} service`,
+      `professional ${serviceName.toLowerCase()}`,
+      service.types.slice(0, 3).map((t) => t.toLowerCase()),
+      service.brands
+        .slice(0, 3)
+        .map((b) => `${b} ${serviceName.toLowerCase()}`),
+      `${serviceName.toLowerCase()} near me`,
+      `best ${serviceName.toLowerCase()} service`,
+      `affordable ${serviceName.toLowerCase()}`,
+      `certified ${serviceName.toLowerCase()} technicians`,
+      `same day ${serviceName.toLowerCase()}`,
+      `${serviceName.toLowerCase()} warranty`,
+      `free ${serviceName.toLowerCase()} quote`,
+    ]
+      .flat()
+      .join(", "),
+    openGraph: {
+      title: `${serviceName} Services in Sri Lanka | Professional & Affordable | EREngineers`,
+      description: serviceDescription,
+      url: `https://www.erengineers.lk/services/${service.slug}`,
+      type: "website",
+      siteName: "EREngineers",
+      locale: "en_LK",
+      images: [
+        {
+          url: `https://www.erengineers.lk/images/ere-logo.jpg`,
+          width: 1200,
+          height: 630,
+          alt: `${service.name} Service by EREngineers`,
+        },
+      ],
+      emails: "info@www.erengineers.lk",
+      phoneNumbers: "+94771234567",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${serviceName} Services | EREngineers Sri Lanka`,
+      description: serviceDescription.substring(0, 200),
+      images: [`https://www.erengineers.lk/images/ere-logo.jpg`],
+      site: "@erengineers",
+      creator: "@erengineers",
+    },
+    alternates: {
+      canonical: `https://www.erengineers.lk/services/${service.slug}`,
+      languages: {
+        "en-US": `https://www.erengineers.lk/services/${service.slug}`,
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+  };
+};
 
-        <Grid container spacing={6}>
-          <Grid size={{ xs: 12, md: 8 }}>
-            <Box
-              component={motion.div}
-              variants={fadeInUp}
-              initial="hidden"
-              animate="visible"
-            >
-              <Typography variant="h3" fontWeight={700} gutterBottom>
-                {service.title}
-              </Typography>
-              <Typography variant="body1" color="text.secondary" paragraph>
-                {service.fullDescription}
-              </Typography>
+const ServicePage = async ({ params }) => {
+  const resolved = await params;
+  const { id } = resolved;
+  const service = services.filter((service) => service.id === id)[0];
 
-              <Typography
-                variant="h5"
-                fontWeight={600}
-                gutterBottom
-                sx={{ mt: 4 }}
-              >
-                Types We Service
-              </Typography>
-              <Stack
-                direction="row"
-                spacing={1}
-                sx={{ gap: 1, mb: 4, flexWrap: "wrap" }}
-              >
-                {service.types.map((type) => (
-                  <Chip
-                    key={type}
-                    label={type}
-                    color="primary"
-                    variant="outlined"
-                  />
-                ))}
-              </Stack>
+  return <ServiceDetailsPage service={service} />;
+};
 
-              <Typography variant="h5" fontWeight={600} gutterBottom>
-                Our Process
-              </Typography>
-              <List>
-                {service.process.map((step, index) => (
-                  <ListItem key={index}>
-                    <ListItemIcon>
-                      <CheckCircle color="success" />
-                    </ListItemIcon>
-                    <ListItemText primary={step} />
-                  </ListItem>
-                ))}
-              </List>
-
-              <Typography
-                variant="h5"
-                fontWeight={600}
-                gutterBottom
-                sx={{ mt: 2 }}
-              >
-                Benefits
-              </Typography>
-              <Grid container spacing={2} sx={{ mb: 4 }}>
-                {service.benefits.map((benefit) => (
-                  <Grid size={{ xs: 12, sm: 6 }} key={benefit}>
-                    <Paper
-                      sx={{
-                        p: 2,
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 1,
-                      }}
-                    >
-                      <CheckCircle sx={{ color: "#10B981" }} />
-                      <Typography>{benefit}</Typography>
-                    </Paper>
-                  </Grid>
-                ))}
-              </Grid>
-            </Box>
-          </Grid>
-
-          <Grid size={{ xs: 12, md: 4 }}>
-            <Card sx={{ position: "sticky", top: 100 }}>
-              <CardContent>
-                <Typography variant="h5" fontWeight={700} gutterBottom>
-                  Get a Quote
-                </Typography>
-                <Divider sx={{ my: 2 }} />
-                <Stack spacing={1.5}>
-                  <Typography
-                    variant="body2"
-                    sx={{ display: "flex", alignItems: "center", gap: 1 }}
-                  >
-                    ✓ Free consultation & quote
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{ display: "flex", alignItems: "center", gap: 1 }}
-                  >
-                    ✓ Certified expert technicians
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{ display: "flex", alignItems: "center", gap: 1 }}
-                  >
-                    ✓ Quick response guaranteed
-                  </Typography>
-                </Stack>
-                <Button
-                  fullWidth
-                  variant="contained"
-                  href="/quote"
-                  sx={{ mt: 3 }}
-                >
-                  Request Quote
-                </Button>
-                <Button
-                  fullWidth
-                  variant="outlined"
-                  href="/contact"
-                  sx={{ mt: 2 }}
-                >
-                  Contact Us
-                </Button>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-      </Container>
-    </Box>
-  );
-}
+export default ServicePage;

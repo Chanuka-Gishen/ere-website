@@ -10,7 +10,7 @@ export const metadata = {
     "Expert AC installation, repair, maintenance, gas refilling, relocation & rental services. Certified technicians, same-day service, best prices. Free quotes!",
   keywords:
     "AC installation, AC repair, AC maintenance, AC gas refilling, AC relocation, AC rental, air conditioning service, HVAC services, Sri Lanka",
-  authors: [{ name: "EREngineers" }],
+  authors: [{ name: "EREngineers", url: "https://www.erengineers.lk" }],
   creator: "EREngineers",
   publisher: "EREngineers",
   robots: {
