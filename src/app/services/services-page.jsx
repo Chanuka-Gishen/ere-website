@@ -221,7 +221,7 @@ const ServicesPage = () => {
     <Fragment>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateJsonLd()) }}
       />
       <Box>
         {/* Hero Section */}
