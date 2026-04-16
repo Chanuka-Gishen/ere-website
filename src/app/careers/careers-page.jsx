@@ -9,7 +9,6 @@ import {
   CardContent,
   Button,
   Chip,
-  Stack,
   Breadcrumbs,
   Link as MuiLink,
   Paper,
@@ -18,7 +17,6 @@ import {
   Home,
   NavigateNext,
   Work,
-  School,
   TrendingUp,
   People,
   LocationOn,
@@ -42,12 +40,6 @@ const benefits = [
     description: "Professional development opportunities",
     icon: <TrendingUp />,
     color: "#10B981",
-  },
-  {
-    title: "Training Programs",
-    description: "Continuous learning & certification",
-    icon: <School />,
-    color: "#FF9800",
   },
   {
     title: "Great Team Culture",
@@ -242,7 +234,7 @@ const CareersPage = () => {
 
           <Grid container spacing={4} sx={{ mb: 8 }}>
             {benefits.map((benefit, index) => (
-              <Grid size={{ xs: 12, sm: 6, md: 3 }} key={benefit.title}>
+              <Grid size={{ xs: 12, sm: 6, md: 4 }} key={benefit.title}>
                 <Box sx={{ textAlign: "center" }}>
                   <Box
                     sx={{

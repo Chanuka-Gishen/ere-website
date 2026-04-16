@@ -42,10 +42,10 @@ const footerLinks = {
   ],
   company: [
     { name: "About Us", href: "/about" },
-    { name: "Service Areas", href: "/service-areas" },
+    { name: "Service Areas", href: "/services" },
     { name: "Blog", href: "/blog" },
     { name: "Contact Us", href: "/contact" },
-    { name: "FAQs", href: "/faqs" },
+    { name: "Careers", href: "/careers" },
     { name: "Privacy Policy", href: "/privacy" },
   ],
 };
@@ -246,65 +246,6 @@ const Footer = () => {
                 {footerLinks.services.map((link) => (
                   <MuiLink
                     key={link.id}
-                    component={Link}
-                    href={link.href}
-                    sx={{
-                      color: "#94A3B8",
-                      textDecoration: "none",
-                      fontSize: "0.875rem",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 0.5,
-                      transition: "all 0.3s ease",
-                      "&:hover": {
-                        color: "#60A5FA",
-                        transform: "translateX(4px)",
-                      },
-                    }}
-                  >
-                    <ChevronRight sx={{ fontSize: 16 }} />
-                    {link.name}
-                  </MuiLink>
-                ))}
-              </Stack>
-            </Box>
-          </Grid>
-
-          {/* Rental Links */}
-          <Grid size={{ xs: 6, sm: 4, md: 2 }}>
-            <Box
-              component={motion.div}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <Typography
-                variant="h6"
-                sx={{
-                  color: "white",
-                  fontWeight: 600,
-                  mb: 2,
-                  position: "relative",
-                  display: "inline-block",
-                  "&::after": {
-                    content: '""',
-                    position: "absolute",
-                    bottom: -8,
-                    left: 0,
-                    width: 40,
-                    height: 2,
-                    bgcolor: "#1976D2",
-                    borderRadius: 1,
-                  },
-                }}
-              >
-                Rental
-              </Typography>
-              <Stack spacing={1.5}>
-                {footerLinks.rental.map((link) => (
-                  <MuiLink
-                    key={link.name}
                     component={Link}
                     href={link.href}
                     sx={{
