@@ -43,6 +43,7 @@ import {
 } from "@mui/icons-material";
 import Link from "next/link";
 import Image from "next/image";
+import CTASection from "@/components/cta-section";
 
 // Rental options data
 const rentalOptions = [
@@ -785,68 +786,7 @@ const RentalPage = () => {
         </Container>
 
         {/* CTA Section */}
-        <Box
-          sx={{
-            background: "linear-gradient(135deg, #06B6D4 0%, #0891B2 100%)",
-            py: { xs: 6, md: 8 },
-            color: "white",
-          }}
-        >
-          <Container>
-            <Box sx={{ textAlign: "center" }}>
-              <Typography
-                variant="h3"
-                sx={{
-                  fontSize: { xs: "1.8rem", md: "2.5rem" },
-                  fontWeight: 700,
-                  mb: 2,
-                }}
-              >
-                Need Cooling for Your Event?
-              </Typography>
-              <Typography variant="h6" sx={{ mb: 4, opacity: 0.9 }}>
-                Get a free quote for AC rental
-              </Typography>
-              <Stack
-                direction={{ xs: "column", sm: "row" }}
-                spacing={2}
-                sx={{ justifyContent: "center" }}
-              >
-                <Button
-                  variant="contained"
-                  size="large"
-                  href="/quote"
-                  sx={{
-                    bgcolor: "white",
-                    color: "#06B6D4",
-                    "&:hover": { bgcolor: "#E3F2FD" },
-                    px: 4,
-                    py: 1.5,
-                  }}
-                >
-                  Request a Quote
-                </Button>
-                <Button
-                  variant="outlined"
-                  size="large"
-                  href="/contact"
-                  sx={{
-                    borderColor: "white",
-                    color: "white",
-                    "&:hover": {
-                      borderColor: "white",
-                      bgcolor: "rgba(255,255,255,0.1)",
-                    },
-                    px: 4,
-                    py: 1.5,
-                  }}
-                >
-                  Contact Us
-                </Button>
-              </Stack>
-            </Box>
-          </Container>
-        </Box>
+        <CTASection />
       </Box>
     </>
   );

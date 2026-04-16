@@ -41,6 +41,7 @@ import {
   fadeInRight,
 } from "@/utils/animations";
 import { services } from "@/constants/common-constants";
+import CTASection from "@/components/cta-section";
 
 // Structured Data (JSON-LD) for Services Page
 const generateJsonLd = () => {
@@ -681,79 +682,7 @@ const ServicesPage = () => {
         </Container>
 
         {/* CTA Section */}
-        <Box
-          sx={{
-            background: "linear-gradient(135deg, #1976D2 0%, #0D47A1 100%)",
-            py: { xs: 6, md: 8 },
-            color: "white",
-          }}
-        >
-          <Container>
-            <Box
-              component={motion.div}
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              sx={{ textAlign: "center" }}
-            >
-              <Typography
-                variant="h3"
-                sx={{
-                  fontSize: { xs: "1.8rem", md: "2.5rem" },
-                  fontWeight: 700,
-                  mb: 2,
-                  color: "white",
-                }}
-              >
-                Need AC Service Today?
-              </Typography>
-              <Typography
-                variant="h6"
-                sx={{ mb: 4, opacity: 0.9, color: "white" }}
-              >
-                Get a free quote from our experts
-              </Typography>
-              <Stack
-                direction={{ xs: "column", sm: "row" }}
-                spacing={2}
-                sx={{ justifyContent: "center" }}
-              >
-                <Button
-                  variant="contained"
-                  size="large"
-                  href="/quote"
-                  sx={{
-                    bgcolor: "white",
-                    color: "#1976D2",
-                    "&:hover": { bgcolor: "#E3F2FD" },
-                    px: 4,
-                    py: 1.5,
-                  }}
-                >
-                  Request a Quote
-                </Button>
-                <Button
-                  variant="outlined"
-                  size="large"
-                  href="/contact"
-                  sx={{
-                    borderColor: "white",
-                    color: "white",
-                    "&:hover": {
-                      borderColor: "white",
-                      bgcolor: "rgba(255,255,255,0.1)",
-                    },
-                    px: 4,
-                    py: 1.5,
-                  }}
-                >
-                  Contact Us
-                </Button>
-              </Stack>
-            </Box>
-          </Container>
-        </Box>
+        <CTASection />
       </Box>
     </Fragment>
   );
